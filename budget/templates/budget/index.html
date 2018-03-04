@@ -1,0 +1,16 @@
+<div style="display:flex; flex-direction: column; justify-content: center;">
+{% if db_data %}
+    <div style="flex: 0 1 auto; text-align: center;">
+        <h1 style="color: blue">{{ db_data }}</h1>
+    </div>
+    <div style="flex: 0 1 auto; text-align: center;">
+        <h2 style="color: green">da söt dänn öpis cho...</h2>
+    </div>
+    <div style="flex: 0 1 auto; text-align: center;">
+        <span style="color: red">Budge: :-( CHF</span>
+    </div>
+
+{% else %}
+    <h2>No data are available.</h2>
+{% endif %}
+</div>
