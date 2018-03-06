@@ -5,10 +5,17 @@
             <h1 style="color: blue">{{ db_data }}</h1>
         </div>
         <div style="flex: 0 1 auto; text-align: center;">
+            Hoi {{ user.first_name }} {{ user.last_name }}!
+        </div>
+        <div style="flex: 0 1 auto; text-align: center;">
             <h2 style="color: green">da söt dänn öpis cho...</h2>
         </div>
         <div style="flex: 0 1 auto; text-align: center;">
             <span style="color: red">Budge: :-( CHF</span>
+        </div>
+        <br /><br />
+        <div style="flex: 0 1 auto; text-align: center;">
+            <a href="{% url 'logout' %}">logout</a>
         </div>
 
     {% else %}

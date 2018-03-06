@@ -16,9 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from django.conf.urls import url
+from django.contrib.auth import views as auth_views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls'), name='login'),
+#    url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
+    path('accounts/', include('django.contrib.auth.urls'), name='logout'),
+    # url(r'^logout/$', auth_views.logout, {'template_name': 'logged_out.html'}, name='logout'),
 ]
+
 
 # Use include() to add paths from the catalog application 
 from django.urls import include

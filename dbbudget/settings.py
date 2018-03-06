@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '^x8(5ll-#gjb3+8&oe22s4kjyo9u)b
 # DEBUG = True
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
-ALLOWED_HOSTS = ['db-budget.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['db-budget.herokuapp.com','127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'dbbudget.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,7 +120,7 @@ USE_L10N = True
 USE_TZ = True
 
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/budget/'
 
 
 # Static files (CSS, JavaScript, Images)
