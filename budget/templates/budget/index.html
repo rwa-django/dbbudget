@@ -1,22 +1,22 @@
-<section style="font-size: 60px;">
-    <div style="display:flex; flex-direction: column; justify-content: center;">
+<section>
+    <div class="box">
     {% if db_data %}
-        <div style="flex: 0 1 auto; text-align: center;">
+        <div class="block">
             <h1 style="color: blue">{{ db_data }}</h1>
         </div>
-        <div style="flex: 0 1 auto; text-align: center;">
+        <div class="block">
             Hoi {{ user.first_name }} {{ user.last_name }}!
         </div>
-        <div style="flex: 0 1 auto; text-align: center;">
+        <div class="block">
             <h2 style="color: green">da söt dänn öpis cho...</h2>
         </div>
-        <div style="flex: 0 1 auto; text-align: center;">
+        <div class="block">
             <span style="color: red">Budge: :-( CHF</span>
         </div>
         <br /><br />
-        <div style="flex: 0 1 auto; text-align: center;">
+        <div class="block">
             <a href="{% url 'logout' %}"
-               style="text-decoration: none; font-size: 60px;border: 1px solid;border-radius: 40px;padding: 10px 30px; background-color: #d8d8d8;"
+               class="button"
             >logout</a>
         </div>
 

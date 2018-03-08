@@ -3,15 +3,12 @@
 {% block title %}See you!{% endblock %}
 
 {% block content %}
-    <section style="font-size: 60px;">
-        <div style="display:flex; flex-direction: column; justify-content: center;">
-            <div style="flex: 0 1 auto; text-align: center;">
-
+    <section>
+        <div class="box">
+            <div class="block">
               <h2>Logged out</h2>
               <p>You have been successfully logged out.</p>
-              <p><a href="{% url 'login' %}"
-                    style="text-decoration: none; font-size: 60px;border: 1px solid;border-radius: 40px;padding: 10px 30px; background-color: #d8d8d8;">
-                    Log in</a>
+              <p><a href="{% url 'login' %}" class="button">Log in</a>
                 again.
               </p>
             </div>

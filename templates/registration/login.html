@@ -3,20 +3,20 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-    <section style="font-size: 60px;">
-        <div style="display:flex; flex-direction: column; justify-content: center;">
-            <div style="flex: 0 1 auto; text-align: center;">
-                    {% if user.is_authenticated %}
-                        Hi {{ user.username }} {{ user.first_name }} {{ user.last_name }}! <br />
-                        <a href="{% url 'logout' %}">logout</a>
-                    {% else %}
-                        <h2>Login</h2>
-                        <form method="post">
-                            {% csrf_token %}
-                            {{ form.as_p }}
-                            <button type="submit" style="font-size: 60px;border: 1px solid;border-radius: 40px;padding: 10px 30px;">Login</button>
-                        </form>
-                    {% endif %}
+    <section>
+        <div class="box" >
+            <div class="block">
+                {% if user.is_authenticated %}
+                    <h4>Hi {{ user.first_name }} {{ user.last_name }}!</h4>
+                    <a class="button" href="{% url 'logout' %}">logout</a>
+                {% else %}
+                    <h2>Login</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="button button__login">Login</button>
+                    </form>
+                {% endif %}
             </div>
         </div>
     </section>
