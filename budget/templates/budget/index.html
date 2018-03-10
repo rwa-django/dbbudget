@@ -1,23 +1,25 @@
-<section>
-    <div class="box">
+{% extends "budget/base.html" %}
+
+{% block APPTITLE %}{{ db_data }}{% endblock %}
+
+{% block content %}
+<section class="">
+    <div class="content">
     {% if db_data %}
-        <div class="block">
-            <h1 style="color: blue">{{ db_data }}</h1>
+        <div class="box">
+            <h1>Hoi {{ user.first_name }} {{ user.last_name }}!</h1>
         </div>
-        <div class="block">
-            Hoi {{ user.first_name }} {{ user.last_name }}!
-        </div>
-        <div class="block">
+        <div class="box">
             <h2 style="color: green">da söt dänn öpis cho...</h2>
         </div>
-        <div class="block">
+        <div class="box">
             <span style="color: red">Budge: :-( CHF</span>
         </div>
         <br /><br />
-        <div class="block">
-            <a href="{% url 'logout' %}"
-               class="button"
-            >logout</a>
+        <div class="box">
+            <a href="{% url 'logout' %}">
+                <div class="button">Logout</div>
+            </a>
         </div>
 
     {% else %}
@@ -25,3 +27,4 @@
     {% endif %}
     </div>
 </section>
+{% endblock content %}
