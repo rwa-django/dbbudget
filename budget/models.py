@@ -2,6 +2,7 @@ import uuid
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from datetime import datetime
+from django.utils import timezone
 
 # Budget
 class Budget(models.Model):
@@ -20,7 +21,7 @@ class Budget(models.Model):
             help_text="Format: <YYYY>")
     budget_amount = models.DecimalField(max_digits=10,decimal_places=2)
     budget_info = models.CharField(max_length=200, help_text="Buchungs Info")
-    budget_booked = models.DateTimeField('date changed',editable=False)
+    budget_booked = models.DateTimeField(default=timezone.now(),editable=False)
 
     def __str__(self):
         return '{0}-{1} {2}'.format(self.budget_year, self.budget_month, self.budget_amount)
