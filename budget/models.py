@@ -24,8 +24,10 @@ class Budget(models.Model):
     budget_booked = models.DateTimeField(default=timezone.now(),editable=False)
 
     def __str__(self):
-        return '{0}-{1} {2}'.format(self.budget_year, self.budget_month, self.budget_amount)
+        return '{0}/{1}/{2}'.format(self.budget_year, self.budget_month, self.budget_amount)
 
+    def currend_budget(self):
+        return self.budget_amount
 
 class Budget_Pos(models.Model):
     id = models.ForeignKey(Budget, on_delete=models.CASCADE)

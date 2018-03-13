@@ -1,6 +1,6 @@
 {% extends "budget/base.html" %}
 
-{% block APPTITLE %}{{ db_data }}{% endblock %}
+{% block APPTITLE %}DB Budget{% endblock %}
 
 {% block content %}
 <section class="">
@@ -10,10 +10,10 @@
             <h1>Hoi {{ user.first_name }} {{ user.last_name }}!</h1>
         </div>
         <div class="box">
-            <h2 style="color: green">da söt dänn öpis cho...</h2>
+            <span _style="color: green">dis Budget für de Monat {{ month_desc }}</span>
         </div>
         <div class="box">
-            <span style="color: red">Budge: :-( CHF</span>
+            <h2 style="color: red; font-weight: bold">{{ db_data |stringformat:"d" }}.- CHF</h2>
         </div>
         <br /><br />
         <div class="box">
