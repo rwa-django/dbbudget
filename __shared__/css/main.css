@@ -22,6 +22,14 @@ header {
 header.login {
     height: auto;
 }
+header .header__menu {
+    _background-color: #007C8C;
+    position: absolute;
+    _padding: 15px;
+    _border: 1px solid;
+    right: 10px;
+    top: 20px;
+}
 main {
     display: flex;
     height: calc(100vh - 80px);
@@ -42,23 +50,34 @@ footer {
 }
 
 input[type=text],
+input[type=number],
 input[type=password] {
     padding:5px;
     margin: 0 10px;
     border: 1px solid white;
     background-color: #00BCD4;
-    font-size: 30px;
+    font-size: 20px;
     width: 80%;
     text-align: center;
     max-width: 320px;
+    min-height: 35px;
 }
 
 input[type=text]:focus,
 input[type=password]:focus {
     border: 1px solid #005A66;
     background-color: #00E1FF;
+    font-size: 30px;
+}
+input[type=number]:focus {
+    background-color: #e0e0e0;
+    color: red;
+    font-size: 30px;
 }
 
+input.small {
+    width: 200px;
+}
 .content {
     display: flex;
     justify-content: center;
@@ -80,6 +99,14 @@ input[type=password]:focus {
     xxborder: 1px solid;
 }
 
+.content__small .box {
+    margin: 10px auto;
+}
+
+.box__list {
+    border: 1px solid;
+}
+
 .box-button {
     margin: 100px 0;
     padding: 10px 0;
@@ -99,7 +126,10 @@ input[type=password]:focus {
 .button__login {
     margin-top: 50px;
 }
-
+.button__small {
+    width: 152px;
+    margin-top: 15px;
+}
 label {
     font-style: italic;
     color: #007C8C;
@@ -110,3 +140,8 @@ main.app {
     background-color: #00BCD4;
 }
 
+.text__big {
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}

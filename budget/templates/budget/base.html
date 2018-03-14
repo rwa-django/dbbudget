@@ -8,11 +8,16 @@
     <meta name="author" content=""/>
     {% load static %}
     <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css" media="screen" />
-    <title>DB-Budget</title>
+    <title>DB-Budget App</title>
 </head>
 <body>
     <header class="">
         <h2>{% block APPTITLE %}{% endblock %}</h2>
+        <div class="header__menu">
+            <a href="{% url 'logout' %}" title="logout">
+                <img width="30" height="30" src="{% static 'img/logout.gif' %}"/>
+            </a>
+        </div>
     </header>
     <main class="app">
         {% block content %}{% endblock %}

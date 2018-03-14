@@ -4,27 +4,44 @@
 
 {% block content %}
 <section class="">
-    <div class="content">
     {% if db_data %}
-        <div class="box">
-            <h1>Hoi {{ user.first_name }} {{ user.last_name }}!</h1>
+        <div class="content content__small">
+            <div class="box">
+                <h1>Hoi {{ user.first_name }} {{ user.last_name }}!</h1>
+            </div>
+            <div class="box">
+                <span _style="color: green">dis Budget für de Monat {{ month_desc }}</span>
+            </div>
+            <div class="box">
+                {% if db_data < 100 %}
+                    <div class="text__big" style="color: red;">{{ db_data |stringformat:"d" }}.- CHF</div>
+                {% elif db_data < 1000 %}
+                    <div class="text__big" style="color: lightsalmon;">{{ db_data |stringformat:"d" }}.- CHF</div>
+                {% else %}
+                    <div class="text__big" style="color: darkgreen;">{{ db_data |stringformat:"d" }}.- CHF</div>
+                {% endif %}
+            </div>
+            <div class="box">
+                <input class="small" type="number" name="" value="" placeholder="Ausgabe" />
+                <div class="button button__small">
+                    <a href="#">save</a>
+                </div>
+            </div>
         </div>
-        <div class="box">
-            <span _style="color: green">dis Budget für de Monat {{ month_desc }}</span>
+        <div class="content">
+            <div class="box__list">
+                Liste
+                {% for budget in Q_Budgets %}
+                    <li>{{ budget.budget_month }} {{ budget.budget_year }} {{ budget.budget_amount }} {{ budget.budget_info }} {{ budget.budget_booked }}</li>
+                {% endfor %}
+            </div>
         </div>
-        <div class="box">
-            <h2 style="color: red; font-weight: bold">{{ db_data |stringformat:"d" }}.- CHF</h2>
-        </div>
-        <br /><br />
-        <div class="box">
-            <a href="{% url 'logout' %}">
-                <div class="button">Logout</div>
-            </a>
-        </div>
-
     {% else %}
-        <h2>No data are available.</h2>
+        <div class="content">
+            <div class="box">
+                <h2>No data are available.</h2>
+            </div>
+        </div>
     {% endif %}
-    </div>
 </section>
 {% endblock content %}

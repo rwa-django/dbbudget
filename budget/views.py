@@ -15,11 +15,14 @@ def index(request):
     month = datetime.now().month
     actuel_budget = Budget.objects.filter(budget_month=month).filter(budget_year=year).values()
 
+    Q_Budgets = Budget.objects.all()
+
     template = loader.get_template('budget/index.html')
     context = {
         'db_data': actuel_budget[0]['budget_amount'],
         'year': year,
         'month': month,
-        'month_desc' : date(datetime.now(), 'F')
+        'month_desc' : date(datetime.now(), 'F'),
+        'Q_Budgets': Q_Budgets,
     }
     return HttpResponse(template.render(context, request))
