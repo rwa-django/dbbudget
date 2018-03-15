@@ -7,7 +7,7 @@
     {% if db_data %}
         <div class="content content__small">
             <div class="box">
-                <h1>Hoi {{ user.first_name }} {{ user.last_name }}!</h1>
+                <h2>Hoi {{ user.first_name }} {{ user.last_name }}!</h2>
             </div>
             <div class="box">
                 <span _style="color: green">dis Budget für de Monat {{ month_desc }}</span>
@@ -22,18 +22,38 @@
                 {% endif %}
             </div>
             <div class="box">
-                <input class="small" type="number" name="" value="" placeholder="Ausgabe" />
-                <div class="button button__small">
-                    <a href="#">save</a>
-                </div>
+                <form action="" method="post">{% csrf_token %}
+                    <input class="small" type="number" name="amount" value="" placeholder="Ausgabe" />
+                    <div class="button button__small">
+                        <input class="button__submit" type="submit" value="save" />
+                    </div>
+                </form>
             </div>
         </div>
         <div class="content">
             <div class="box__list">
-                Liste
-                {% for budget in Q_Budgets %}
-                    <li>{{ budget.budget_month }} {{ budget.budget_year }} {{ budget.budget_amount }} {{ budget.budget_info }} {{ budget.budget_booked }}</li>
-                {% endfor %}
+                <table class="table_list" border="0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th class="al">Datum</th>
+                            <th class="ar">CHF</th>
+                            <th></th>
+                            <th class="al">Info</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for budget in Q_Budget_Pos %}
+                            <tr>
+                                <td class=""></td>
+                                <td class="">{{ budget.booking_date }}</td>
+                                <td class="ar">{{ budget.booking_amount |stringformat:"d" }}.-</td>
+                                <td class="" width="10"></td>
+                                <td class="al">{{ budget.booking_info }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
     {% else %}

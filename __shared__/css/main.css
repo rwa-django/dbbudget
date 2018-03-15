@@ -4,10 +4,26 @@ body {
     margin: 0;
     color: white;
 }
+
+table {
+	border-collapse: collapse;
+    line-height: 1.5;
+    width: 100%;
+}
+
 a {
     text-decoration: none;
 }
 
+.ar {
+    text-align: right;
+}
+.ac {
+    text-align: center;
+}
+.al {
+    text-align: left;
+}
 h2,
 h4 {
     font-weight: 100;
@@ -104,14 +120,15 @@ input.small {
 }
 
 .box__list {
-    border: 1px solid;
+    margin: 20px 5px;
 }
 
 .box-button {
     margin: 100px 0;
     padding: 10px 0;
 }
-.button {
+.button,
+input[type=submit]{
     background:#007C8C;
     border:0 none;
     cursor:pointer;
@@ -123,6 +140,9 @@ input.small {
     margin: 0 auto;
     max-width: 320px;
 }
+.button__submit {
+    padding: 0 !important;
+}
 .button__login {
     margin-top: 50px;
 }
@@ -130,7 +150,8 @@ input.small {
     width: 152px;
     margin-top: 15px;
 }
-label {
+label,
+th {
     font-style: italic;
     color: #007C8C;
 }
@@ -144,4 +165,8 @@ main.app {
     color: black;
     font-size: 20px;
     font-weight: bold;
+}
+
+.table_list th {
+    border-bottom: solid 1px #007C8C;
 }
