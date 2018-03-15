@@ -21,6 +21,7 @@ def index(request):
 
     Q_Budget_Pos = Budget_Pos.objects.filter(id=actuel_budget[0]['id'])
 
+    val = 0
     for pos in Q_Budget_Pos:
         val =+ pos.booking_amount
 
