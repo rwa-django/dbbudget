@@ -46,7 +46,7 @@
                         {% for budget in Q_Budget_Pos %}
                             <tr>
                                 <td class=""></td>
-                                <td class="">{{ budget.booking_date }}</td>
+                                <td class="">{{ budget.booking_date | date:"D d. M" }}</td>
                                 <td class="ar">{{ budget.booking_amount |stringformat:"d" }}.-</td>
                                 <td class="" width="10"></td>
                                 <td class="al">{{ budget.booking_info }}</td>

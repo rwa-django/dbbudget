@@ -23,13 +23,13 @@ def index(request):
 
     val = 0
     for pos in Q_Budget_Pos:
-        val =+ pos.booking_amount
+        val += pos.booking_amount
 
-    val = actuel_budget[0]['budget_amount'] - amount - val
+    value = actuel_budget[0]['budget_amount'] - amount - val
 
     template = loader.get_template('budget/index.html')
     context = {
-        'db_data': val,
+        'db_data': value,
         'year': year,
         'month': month,
         'month_desc' : date(datetime.now(), 'F'),
