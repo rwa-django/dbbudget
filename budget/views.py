@@ -22,10 +22,18 @@ def index(request):
     Q_Budget_Pos = Budget_Pos.objects.filter(id=actuel_budget[0]['id'])
 
     val = 0
+    last_pos = 1
     for pos in Q_Budget_Pos:
         val += pos.booking_amount
+        last_pos = pos.pos
 
-    value = actuel_budget[0]['budget_amount'] - amount - val
+    value = actuel_budget[0]['budget_amount'] - val
+
+    if amount != 0:
+        # create Q_Budget_pos
+        print('--Create Pos %s' % (last_pos + 1))
+
+    value = value - amount
 
     template = loader.get_template('budget/index.html')
     context = {
