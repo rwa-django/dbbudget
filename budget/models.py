@@ -40,14 +40,7 @@ class Budget_Pos(models.Model):
 
     class Meta:
         unique_together = (('id','pos'))
-        ordering = ["id", "pos"]
+        ordering = ["id", "-pos"]           # sortierung mit - dreht die Sortierung
 
     def __str__(self):
         return '{0}  {1}.- {2}'.format(self.pos, int(self.booking_amount), self.booking_info)
-
-    def xxsave(self, *args, **kwargs):
-        if self.pk is None:  # if this is new object (not update)
-            self.Budget_Pos.pos += 1
-            self.id = str(uuid.uuid4())
-        instance = super(Budget_Pos, self).save(*args, **kwargs)
-        return instance
