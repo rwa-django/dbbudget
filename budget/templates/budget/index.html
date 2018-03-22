@@ -8,12 +8,10 @@
         <div class="content content__small">
             <div class="box">
                 <h2>Hoi {{ user.first_name }} {{ user.last_name }}!</h2>
-            </div>
-            <div class="box">
                 <span _style="color: green">dis Budget für de Monat {{ month_desc }}</span>
             </div>
             <div class="box">
-                {% if db_data < 100 %}
+                {% if db_data < 200 %}
                     <div class="text__big" style="color: red;">{{ db_data |stringformat:"d" }}.- CHF</div>
                 {% elif db_data < 1000 %}
                     <div class="text__big" style="color: lightsalmon;">{{ db_data |stringformat:"d" }}.- CHF</div>
@@ -48,7 +46,13 @@
                             <tr>
                                 <td class=""></td>
                                 <td class="">{{ budget.booking_date | date:"D d. M" }}</td>
-                                <td class="ar">{{ budget.booking_amount |stringformat:"d" }}.-</td>
+                                <td class="ar">
+                                {% if budget.booking_amount < 0 %}
+                                    <span style="color: #737373;font-style: italic;">{{ budget.booking_amount |stringformat:"d" }}.-</span>
+                                {% else %}
+                                    <span style="color: #002D33">{{ budget.booking_amount |stringformat:"d" }}.-</span>
+                                {% endif %}
+                                </td>
                                 <td class="" width="10"></td>
                                 <td class="al">{{ budget.booking_info }}</td>
                             </tr>

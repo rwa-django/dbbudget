@@ -31,16 +31,16 @@ class Budget(models.Model):
         return self.budget_amount
 
 class Budget_Pos(models.Model):
-    id = models.ForeignKey(Budget, on_delete=models.CASCADE)
-    pos = models.SmallIntegerField(primary_key=True,default=1)
+    budget_id = models.ForeignKey(Budget, on_delete=models.CASCADE)
+    pos = models.SmallIntegerField(default=1)
     booking_date = models.DateTimeField(default=datetime.now())
     booking_amount = models.DecimalField(default=0,max_digits=10,decimal_places=2)
     booking_info = models.CharField(max_length=200, help_text="Buchungs Info")
     booking_booked = models.DateTimeField(default=timezone.now,editable=False)
 
     class Meta:
-        unique_together = (('id','pos'))
-        ordering = ["id", "-pos"]           # sortierung mit - dreht die Sortierung
+        unique_together = (('budget_id', 'pos'),)
+        ordering = ["budget_id", "-pos"]           # sortierung mit - dreht die Sortierung
 
     def __str__(self):
         return '{0}  {1}.- {2}'.format(self.pos, int(self.booking_amount), self.booking_info)
