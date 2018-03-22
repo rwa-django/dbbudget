@@ -78,6 +78,7 @@ input[type=password] {
     margin: 0 10px;
     border: 1px solid white;
     background-color: #00BCD4;
+    border-radius: 0;
     font-size: 20px;
     width: 80%;
     text-align: center;
