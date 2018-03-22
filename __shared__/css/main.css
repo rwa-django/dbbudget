@@ -65,6 +65,12 @@ footer {
     color: darkgrey;
 }
 
+input {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+}
+
 input[type=text],
 input[type=number],
 input[type=password] {
