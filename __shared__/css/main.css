@@ -93,7 +93,7 @@ input[type=password]:focus {
     font-size: 30px;
 }
 input[type=number]:focus {
-    background-color: #e0e0e0;
+    background-color: #00E1FF;
     color: red;
     font-size: 30px;
 }

@@ -4,21 +4,23 @@
 
 {% block content %}
 <section class="">
-    {% if db_data %}
+    {% if True %}
         <div class="content content__small">
             <div class="box">
                 <h2>Hoi {{ user.first_name }} {{ user.last_name }}!</h2>
                 <span _style="color: green">dis Budget für de Monat {{ month_desc }}</span>
             </div>
-            <div class="box">
-                {% if db_data < 200 %}
-                    <div class="text__big" style="color: red;">{{ db_data |stringformat:"d" }}.- CHF</div>
-                {% elif db_data < 1000 %}
-                    <div class="text__big" style="color: lightsalmon;">{{ db_data |stringformat:"d" }}.- CHF</div>
-                {% else %}
-                    <div class="text__big" style="color: darkgreen;">{{ db_data |stringformat:"d" }}.- CHF</div>
-                {% endif %}
-            </div>
+            {% if db_data %}
+                <div class="box">
+                    {% if db_data < 200 %}
+                        <div class="text__big" style="color: red;">{{ db_data |stringformat:"d" }}.- CHF</div>
+                    {% elif db_data < 1000 %}
+                        <div class="text__big" style="color: lightsalmon;">{{ db_data |stringformat:"d" }}.- CHF</div>
+                    {% else %}
+                        <div class="text__big" style="color: darkgreen;">{{ db_data |stringformat:"d" }}.- CHF</div>
+                    {% endif %}
+                </div>
+            {% endif %}
             <div class="box">
                 <form action="" method="post">{% csrf_token %}
                     <input class="small" type="number" name="amount" value="" placeholder="Ausgabe" />
