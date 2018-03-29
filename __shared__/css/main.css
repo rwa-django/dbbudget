@@ -9,6 +9,7 @@ table {
 	border-collapse: collapse;
     line-height: 1.5;
     width: 100%;
+    color: black;
 }
 
 a {
@@ -38,7 +39,7 @@ header {
 header.login {
     height: auto;
 }
-header .header__menu {
+header .header__menu--right {
     _background-color: #007C8C;
     position: absolute;
     _padding: 15px;
@@ -46,6 +47,15 @@ header .header__menu {
     right: 10px;
     top: 20px;
 }
+header .header__menu--left {
+    _background-color: #007C8C;
+    position: absolute;
+    _padding: 15px;
+    _border: 1px solid;
+    left: 10px;
+    top: 20px;
+}
+
 main {
     display: flex;
     height: calc(100vh - 80px);

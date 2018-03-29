@@ -20,20 +20,24 @@
                         <div class="text__big" style="color: darkgreen;">{{ db_data |stringformat:"d" }}.- CHF</div>
                     {% endif %}
                 </div>
+                <div class="box">
+                    <form action="" method="post">{% csrf_token %}
+                        <input class="small" type="number" name="amount" value="" placeholder="Ausgabe" />
+                        <input class="wider" type="text" name="info" value=""  placeholder="Info" />
+                        <div class="button button__small">
+                            <input class="button__submit" type="submit" value="save" />
+                        </div>
+                    </form>
+                </div>
+            {% else %}
+                <div class="box">
+                    <span style="color: red">noch keines erfasst!</span>
+                </div>
             {% endif %}
-            <div class="box">
-                <form action="" method="post">{% csrf_token %}
-                    <input class="small" type="number" name="amount" value="" placeholder="Ausgabe" />
-                    <input class="wider" type="text" name="info" value=""  placeholder="Info" />
-                    <div class="button button__small">
-                        <input class="button__submit" type="submit" value="save" />
-                    </div>
-                </form>
-            </div>
         </div>
         <div class="content">
             <div class="box__list">
-                <table class="table_list" border="0">
+                <table class="_table_list" border="0">
                     <thead>
                         <tr>
                             <th></th>

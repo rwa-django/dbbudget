@@ -1,0 +1,36 @@
+{% extends "budget/base.html" %}
+
+{% block APPTITLE %}DB Budget{% endblock %}
+
+{% block content %}
+<section class="">
+    <div class="content content__small">
+        <div class="box">
+            <h2>Hoi {{ user.first_name }} {{ user.last_name }}!</h2>
+            <span _style="color: green">dini Budget istellige:</span>
+        </div>
+        <div class="box">
+            {% if amount > 0 %}
+                Monatliches Budget: {{ amount |stringformat:"d" }}.- CHF
+            {% else %}
+                <span style="color: red">noch keines erfasst!</span>
+            {% endif %}
+        </div>
+
+        <div class="box">
+            {% if day > 0 %}
+                Budget am {{ day }}. Tag vom Monat zruggsetze.
+            {% else %}
+                <span style="color: red">noch kein Tag erfasst!</span>
+            {% endif %}
+        </div>
+        <div class="box">
+            <div class="box box-button">
+                <a href="/">
+                    <div class="button" style="width: 320px">Home</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
