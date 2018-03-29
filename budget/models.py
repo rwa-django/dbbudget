@@ -64,7 +64,7 @@ class Budget_Pos(models.Model):
 class Budget_Base(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE,
-                             editable=False)
+                             editable=True)
     budget_amount = models.DecimalField(default=0,
                                         max_digits=10,
                                         decimal_places=2)

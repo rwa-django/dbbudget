@@ -11,6 +11,8 @@ from django.template.defaultfilters import date
 @login_required(login_url='/accounts/login/')
 def index(request):
 
+    print('-----user-name', request.user.username)
+
     try:
         amount = int(request.POST['amount'])
         info = request.POST['info']
@@ -24,7 +26,13 @@ def index(request):
     day = datetime.now().day
     Q_Budget_Pos = []
 
-    if day > 26:
+    Q_Base = Budget_Base.objects.filter(user=request.user)
+    if Q_Base:
+        startDay = Q_Base[0].budget_start_day
+    else:
+        startDay = 31
+
+    if day >= startDay:
         month += 1
         if month > 12:
             month = 1
@@ -54,7 +62,9 @@ def index(request):
             Q_Budget_Pos = Budget_Pos.objects.filter(budget_id=actuel_budget[0])
 
         value = value - amount
-
+    else:
+        b = Budget(login=request.user.username,budget_month=month,budget_year=year,budget_amount=Q_Base[0].budget_amount,budget_info='Init {0}'.format(date(datetime.now(), 'F')))
+        b.save()
 
     template = loader.get_template('budget/index.html')
     context = {
@@ -68,16 +78,18 @@ def index(request):
 
 
 def Profile(request):
-    year = datetime.now().year
-    month = datetime.now().month
-    day = datetime.now().day
 
+    day = 0
+    amount = 0
     Q_data = Budget_Base.objects.filter(user=request.user)
-    print('======%s %s' % (Q_data.__dict__,request.user))
+    if Q_data:
+        day = Q_data[0].budget_start_day
+        amount = Q_data[0].budget_amount
+
 
     template = loader.get_template('budget/profile.html')
     context = {
-        'day': Q_data[0].budget_start_day,
-        'amount': Q_data[0].budget_amount,
+        'day': day,
+        'amount': amount,
     }
     return HttpResponse(template.render(context, request))
