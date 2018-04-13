@@ -5,68 +5,61 @@
 {% block content %}
 <section class="">
     {% if True %}
-        <div class="content content__small">
-            <div class="box">
-                <h2>Hoi {{ user.first_name }} {{ user.last_name }}! {{ user.username }}</h2>
-                <span _style="color: green">dis Budget für de Monat {{ month_desc }}</span>
-            </div>
-            {% if db_data %}
-                <div class="box">
-                    {% if db_data < 200 %}
-                        <div class="text__big" style="color: red;">{{ db_data |stringformat:"d" }}.- CHF</div>
-                    {% elif db_data < 1000 %}
-                        <div class="text__big" style="color: lightsalmon;">{{ db_data |stringformat:"d" }}.- CHF</div>
-                    {% else %}
-                        <div class="text__big" style="color: darkgreen;">{{ db_data |stringformat:"d" }}.- CHF</div>
-                    {% endif %}
-                </div>
-                <div class="box">
-                    <form action="" method="post">{% csrf_token %}
-                        <input class="small" type="number" name="amount" value="" placeholder="Ausgabe" />
-                        <input class="wider" type="text" name="info" value=""  placeholder="Info" />
-                        <div class="button button__small">
-                            <input class="button__submit" type="submit" value="save" />
-                        </div>
-                    </form>
-                </div>
-            {% else %}
-                <div class="box">
-                    <span style="color: red">noch keines erfasst!</span>
-                </div>
-            {% endif %}
+        <div class="callout primary">
+            <dl style="text-align: center">
+                <dt>Hoi {{ user.first_name }} {{ user.last_name }} !</dt>
+                <dd>dis Budget für de Monat {{ month_desc }}</dd>
+                {% if db_data %}
+                    <dt>
+                        {% if db_data < 200 %}
+                            <div class="text__big" style="color: red;">{{ db_data |stringformat:"d" }}.- CHF</div>
+                        {% elif db_data < 1000 %}
+                            <div class="text__big" style="color: lightsalmon;">{{ db_data |stringformat:"d" }}.- CHF</div>
+                        {% else %}
+                            <div class="text__big" style="color: darkgreen;">{{ db_data |stringformat:"d" }}.- CHF</div>
+                        {% endif %}
+                    </dt>
+                    <dd>
+                        <form action="" method="post">{% csrf_token %}
+                            <input class="small" type="number" name="amount" value="" placeholder="Ausgabe" />
+                            <input class="wider" type="text" name="info" value=""  placeholder="Info" />
+                            <input class="button expanded" type="submit" value="save" />
+                        </form>
+                    </dd>
+                {% else %}
+                    <dt>
+                        <span style="color: red">noch keines erfasst!</span>
+                    </dt>
+                {% endif %}
+            </dl>
         </div>
-        <div class="content">
-            <div class="box__list">
-                <table class="_table_list" border="0">
-                    <thead>
+        <div class="cell">
+            <table class="">
+                <thead>
+                    <tr>
+                        <th class="al">Datum</th>
+                        <th class="ar">CHF</th>
+                        <th class="al">Info</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for budget in Q_Budget_Pos %}
                         <tr>
-                            <th></th>
-                            <th class="al">Datum</th>
-                            <th class="ar">CHF</th>
-                            <th></th>
-                            <th class="al">Info</th>
+                            <td class="nowrap">{{ budget.booking_date | date:"D d. M" }}</td>
+                            <td class="ar">
+                            {% if budget.booking_amount < 0 %}
+                                <span style="color: #737373;font-style: italic;">{{ budget.booking_amount |stringformat:"d" }}.-</span>
+                            {% else %}
+                                <span style="color: #002D33">{{ budget.booking_amount |stringformat:"d" }}.-</span>
+                            {% endif %}
+                            </td>
+                            <td class="al">{{ budget.booking_info }}</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        {% for budget in Q_Budget_Pos %}
-                            <tr>
-                                <td class=""></td>
-                                <td class="">{{ budget.booking_date | date:"D d. M" }}</td>
-                                <td class="ar">
-                                {% if budget.booking_amount < 0 %}
-                                    <span style="color: #737373;font-style: italic;">{{ budget.booking_amount |stringformat:"d" }}.-</span>
-                                {% else %}
-                                    <span style="color: #002D33">{{ budget.booking_amount |stringformat:"d" }}.-</span>
-                                {% endif %}
-                                </td>
-                                <td class="" width="10"></td>
-                                <td class="al">{{ budget.booking_info }}</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
+
     {% else %}
         <div class="content">
             <div class="box">
